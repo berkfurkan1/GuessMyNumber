@@ -1,6 +1,6 @@
 # GuessMyNumber
 The application tries to guess the number we keep in mind.
-[Proje Videosunu İzlemek için Tıklayın](https://youtube.com/shorts/MoFnvSN5L-A?feature=share)
+[Click to Watch the Project Video](https://youtube.com/shorts/MoFnvSN5L-A?feature=share)
 -----------------------------------------------------------------------------------------------------------------------------------------
 ![appphoto1_homeScreen](https://github.com/berkfurkan1/GuessMyNumber/blob/main/appScreenImage/HomeScreen.png)  
 ![appphoto2_HomeScreenWithNumber](https://github.com/berkfurkan1/GuessMyNumber/blob/main/appScreenImage/HomeScreenWithNumber.png)
