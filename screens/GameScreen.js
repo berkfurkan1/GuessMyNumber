@@ -54,7 +54,7 @@ function GameScreen({userNumber, onGameOver}){
         }
         const newRndNumber = generateRandomBetween(minBoundary, maxBoundary, currentGuess);
         setCurrentGuess(newRndNumber);
-        setGuessRounds(prevGuessRounds => [newRndNumber,...prevGuessRounds])
+        setGuessRounds((prevGuessRounds) => [newRndNumber,...prevGuessRounds])
     }
     const guessRoundListLength = guessRounds.length;
 
@@ -74,13 +74,23 @@ function GameScreen({userNumber, onGameOver}){
             </View>
         </Card>
         <View style={styles.listContainer} >
-            {/* guessRounds.map(guessRound => <Text key={guessRound}  >{guessRound} </Text>)*/}
-            <FlatList 
-            data={guessRounds} 
-            renderItem={(itemData) => (<GuessLogItem roundNumber={guessRoundListLength - itemData.index} guess={itemData.item} />)} //roundNumber değerini itemData.index ile sırası ile oluştuurlan index numarasından çekiyoruz.
-            keyExtractor={(item) => item} // keyExtractor propsu, her bir elemanın benzersiz bir key'e sahip olmasını sağlar. burdaki datamızda key değeri olmadığı için direkt item'ı key olarak atadık. Çünkü her bir item değeri benzersiz.
-            /> {/* itemData react-native tarafından otomatik olarak sağlanan FlatList propsudur , itemData.item.value' de bir react-native propsudur .uygulamada item direkt sayı değeri olduğu için value değerini yazmasakta olur.*/}
-                
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => {
+            try {
+              return (
+                <GuessLogItem
+                  roundNumber={guessRounds.length - itemData.index}
+                  guess={itemData.item}
+                />
+              );
+            } catch (error) {
+              console.error('Error rendering item:', error);
+              return null; // Hata durumunda hiçbir şey render etme
+            }
+          }}
+          keyExtractor={(item) => item.toString()}
+        />
         </View>
     </View>
     )
